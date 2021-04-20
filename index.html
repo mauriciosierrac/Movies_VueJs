@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Buscador de peliculas">
+
+
+<!--metadata para PWA
+name= theme-color, pinta la barra de estado de un color en la parte superior (android)-->
+<meta name="theme-color" content="#f5f5dc" />
+<!--metadata para PWA
+name= apple-mobile-app-capable, permite modificar barra de estado en la parte superior (IOS)-->
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta
+  name="apple-mobile-web-app-status-bar-style"
+  content="black-translucent"
+/>
+
+<!-- optimizaciones de SEO, para que los robots de google sepan q son optimas para pwa-->
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+
+    <title>Gradient Gen</title>
+<!-- iconos -->
+    <!-- el favicon debe ser extension .icon pero con type= image/png acepta png -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./img/favicon.png" />
+    <link rel="apple-touch-startup-image" href="./img/favicon.png" />
+
+    <!-- manifiesto json-->
+    <link rel="manifest" href="./manifest.json" />
+
+
+
+
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Api Movies</title>
+  </head>
+  <body>
+    <div id="app" class="containterdiv">
+      <h1 style="text-align: center">{{title}}</h1>
+      <hr />
+
+      <div class="form">
+        <form @submit.prevent="getMovie">
+          <div class="label">
+            <label>
+              Movie Name: <br><br>
+              <input type="tel" v-model="movieTitle" class="textbox" />
+            </label>
+          </div>
+          <div class="submit">
+            <input type="submit" value="Get Movie" class="button" />
+          </div>
+        </form>
+      </div>
+
+      <div class="container">
+        <p>Movie: {{movieData.Title}}</p>
+        <p>Year: {{movieData.Year}}</p>
+        <p>Genre: {{movieData.Genre}}</p>
+        <p>Actors: {{movieData.Actors}}</p>
+        <div class="pic">
+          <img :src="movieData.Poster" :alt="movieData.imdbID"/>
+        </div>
+      </div>
+      <footer>
+        <div class="footer">
+          <p>Design by: Sierra Code</p>
+        </div>
+      </footer>
+    </div>
+    <script src="./load.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/mountApp.js"></script>
+  </body>
+</html>
